@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
-* Студент: [Татьяна Комарова](https://up.htmlacademy.ru/javascript/23/user/1674535).
-* Наставник: `Неизвестно`.
+- Студент: [Татьяна Комарова](https://up.htmlacademy.ru/javascript/23/user/1674535).
+- Наставник: [Павел Нюкало](https://up.htmlacademy.ru/javascript/23/user/869225).
 
 ---
 
