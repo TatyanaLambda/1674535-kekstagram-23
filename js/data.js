@@ -53,3 +53,5 @@ const createPhotoDescriptions = () =>
   const mixedArray = getMixedArray(indexArray);
   return mixedArray.map((element) => createPhotoDescription(element));
 };
+
+createPhotoDescriptions();
