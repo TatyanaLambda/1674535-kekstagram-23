@@ -1,6 +1,3 @@
-// eslint-disable-next-line no-use-before-define
-export {getRandomPositiveInteger, getMixedArray, getMixedRandomLenghtArray};
-
 const getRandomPositiveInteger = (a, b) => {
   const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
   const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
@@ -30,3 +27,5 @@ const getMixedRandomLenghtArray = (elements) => {
 };
 
 checkStringLength('мимими');
+
+export {getRandomPositiveInteger, getMixedArray, getMixedRandomLenghtArray};
