@@ -54,4 +54,4 @@ const createPhotoDescriptions = () =>
   return mixedArray.map((element) => createPhotoDescription(element));
 };
 
-createPhotoDescriptions();
+export {createPhotoDescriptions};
