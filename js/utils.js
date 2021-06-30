@@ -26,6 +26,8 @@ const getMixedRandomLenghtArray = (elements) => {
   return cutElements;
 };
 
+const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
+
 checkStringLength('мимими');
 
-export {getRandomPositiveInteger, getMixedArray, getMixedRandomLenghtArray};
+export {getRandomPositiveInteger, getMixedArray, getMixedRandomLenghtArray, isEscEvent};
