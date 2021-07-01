@@ -1,4 +1,5 @@
 import {createPhotoDescriptions} from './data.js';
+import {showBigPicture} from './bigpicture.js';
 
 const pictures = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture')
@@ -16,3 +17,5 @@ photoDescriptions.forEach(({url, likes , comments}) => {
 });
 
 pictures.appendChild(photoDescriptionFragment);
+
+showBigPicture(photoDescriptions[0]);
