@@ -13,6 +13,7 @@ const pictureCancelBtn = document.querySelector('#picture-cancel');
 const commentTemplate = document.querySelector('#comment').content.querySelector('.social__comment');
 
 const showBigPicture = (picture) => {
+  console.log(picture);
   bigPicture.classList.remove('hidden');
   socialCommentCount.classList.add('hidden');
   commentsLoader.classList.add('hidden');

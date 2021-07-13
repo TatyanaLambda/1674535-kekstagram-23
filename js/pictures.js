@@ -18,4 +18,13 @@ photoDescriptions.forEach(({url, likes , comments}) => {
 
 pictures.appendChild(photoDescriptionFragment);
 
-showBigPicture(photoDescriptions[0]);
+const bigPictureShower = function (evt) {
+  if (evt.target.classList.contains('picture')) {
+    console.log(1);
+    evt.preventDefault();
+    const targetImage = evt.target.querySelector('.picture__img');
+    showBigPicture(targetImage);
+  }
+};
+
+pictures.addEventListener('click', bigPictureShower);
