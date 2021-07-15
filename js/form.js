@@ -7,7 +7,7 @@ const body = document.querySelector('body');
 const uploadSubmitBtn = document.querySelector('#upload-submit');
 const textHashtag = document.querySelector('.text__hashtags');
 const textDescription = document.querySelector('.text__description');
-const uploadForm = window.util.uploadForm;
+const uploadForm = document.querySelector('.img-upload__form');
 
 const onPopupEscKeydown = (evt) => {
   if (isEscEvent(evt)) {

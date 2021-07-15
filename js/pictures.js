@@ -24,6 +24,7 @@ const bigPictureShower = function (evt) {
     const targetImage = evt.target.querySelector('.picture__img');
     showBigPicture(targetImage);
   }
+  showBigPicture(photoDescriptions[0]);
 };
 
 pictures.addEventListener('click', bigPictureShower);
