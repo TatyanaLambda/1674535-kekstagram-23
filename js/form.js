@@ -9,7 +9,6 @@ const textHashtag = document.querySelector('.text__hashtags');
 const textDescription = document.querySelector('.text__description');
 const uploadForm = window.util.uploadForm;
 
-
 const onPopupEscKeydown = (evt) => {
   if (isEscEvent(evt)) {
     evt.preventDefault();
@@ -38,6 +37,8 @@ function closeUserModal (){
     uploadForm.reset();
   }
 }
+
+
 
 userModalOpenElement.addEventListener('change', () => {
   openUserModal();

@@ -17,15 +17,13 @@ textDescription.addEventListener('input', () => {
 
 
 const checkUnicalElements = function(arr) {
-  let i = 0;
-  const iMax = arr.length;
-  const testobj = {};
-  let result = false;
-  for ( ; i< iMax; i++ ) {
-    result = result || testobj.hasOwnProperty(arr[i].toLowerCase());
-    testobj[arr[i]] = arr[i];
+  const tempArr = [];
+  for (let i=0, l=arr.length; i<l; i++){
+    if (tempArr.indexOf(arr[i]) === -1 && arr[i] !== ''){
+      tempArr.push(arr[i]);
+    }
   }
-  return !result;
+  return tempArr;
 };
 
 

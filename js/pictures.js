@@ -20,7 +20,6 @@ pictures.appendChild(photoDescriptionFragment);
 
 const bigPictureShower = function (evt) {
   if (evt.target.classList.contains('picture')) {
-    console.log(1);
     evt.preventDefault();
     const targetImage = evt.target.querySelector('.picture__img');
     showBigPicture(targetImage);
