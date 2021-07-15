@@ -38,8 +38,6 @@ function closeUserModal (){
   }
 }
 
-
-
 userModalOpenElement.addEventListener('change', () => {
   openUserModal();
 });
