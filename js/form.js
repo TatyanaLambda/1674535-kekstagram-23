@@ -5,7 +5,9 @@ const userModalElement = document.querySelector('.img-upload__overlay');
 const uploadCancelBtn = document.querySelector('#upload-cancel');
 const body = document.querySelector('body');
 const uploadSubmitBtn = document.querySelector('#upload-submit');
-
+const textHashtag = document.querySelector('.text__hashtags');
+const textDescription = document.querySelector('.text__description');
+const uploadForm = window.util.uploadForm;
 
 
 const onPopupEscKeydown = (evt) => {
@@ -26,13 +28,15 @@ function openUserModal (){
 }
 
 function closeUserModal (){
-  body.classList.remove('modal-open');
-  userModalElement.classList.add('hidden');
-  uploadCancelBtn.removeEventListener('click', () => {
+  if (textHashtag !== document.activeElement && textDescription !== document.activeElement){
+    body.classList.remove('modal-open');
     userModalElement.classList.add('hidden');
-  });
-
-  document.removeEventListener('keydown', onPopupEscKeydown);
+    uploadCancelBtn.removeEventListener('click', () => {
+      userModalElement.classList.add('hidden');
+    });
+    document.removeEventListener('keydown', onPopupEscKeydown);
+    uploadForm.reset();
+  }
 }
 
 userModalOpenElement.addEventListener('change', () => {
@@ -49,13 +53,8 @@ uploadSubmitBtn.addEventListener('click', (evt) => {
   closeUserModal();
 });
 
-/*
-
-
-хэш-теги нечувствительны к регистру: #ХэшТег и #хэштег считаются одним и тем же тегом;
-
-один и тот же хэш-тег не может быть использован дважды;
-
-
-если фокус находится в поле ввода хэш-тега, нажатие на Esc не должно приводить к закрытию формы редактирования изображения.
- */
+document.addEventListener('keydown', (evt) => {
+  if (textHashtag === document.activeElement || textDescription === document.activeElement) {
+    evt.stopPropagation();
+  }
+});

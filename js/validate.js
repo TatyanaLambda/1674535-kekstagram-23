@@ -1,5 +1,6 @@
 const MAX_DESCRIPTION_LENGTH = 140;
-const MAX_HASHTAGS_COUNT = 5;
+const MAX_HASHTAG_COUNT = 5;
+const MAX_HASHTAG_LENGTH = 20;
 const textHashtag = document.querySelector('.text__hashtags');
 const textDescription = document.querySelector('.text__description');
 
@@ -36,29 +37,35 @@ const pushErrorMessage = function (errorMessage, errorMessages) {
 };
 
 const validateHashtags = function (hashtags) {
-  const hashtagRegular = /^#[A-Za-zА-Яа-я0-9]{1-19}$/;
+  const HASHTAG_REGULAR = /^([#]{1})([0-9a-zа-яё]{1,19})$/g;
   const errorMessages = [];
   const hashtagCount = hashtags.length;
-  if (hashtagCount>MAX_HASHTAGS_COUNT){
+  if (hashtagCount>MAX_HASHTAG_COUNT){
     pushErrorMessage('Нельзя указывать больше пяти хэш-тегов', errorMessages);
   }
-  hashtags.forEach((element) => {
-    if(!hashtagRegular.test(element)){
-      textDescription.setCustomValidity(`Неверный формат хэштега; ${element}`);
+  if (!checkUnicalElements(hashtags)){
+    pushErrorMessage('Все хэштеги должны быть уникальными', errorMessages);
+  }
+  hashtags.forEach((hashtag) => {
+    if (!hashtag.startsWith('#')) {
+      pushErrorMessage('Хеш-тег должен начинаться с символа решетки (#).', errorMessages);
+    } else if (hashtag.length === 2) {
+      pushErrorMessage('Хеш-тег не может состоять из одного символа.', errorMessages);
+    } else if (hashtag.length > MAX_HASHTAG_LENGTH) {
+      pushErrorMessage(`Хеш-тег не может состоять из более чем ${MAX_HASHTAG_LENGTH} символов.`, errorMessages);
+    } else if(!hashtag.match(HASHTAG_REGULAR)){
+      pushErrorMessage('Хеш-тег должен состоять только из букв и цифр', errorMessages);
     } else{
       textDescription.setCustomValidity('');
     }
-    if (!checkUnicalElements(hashtags)){
-      textDescription.setCustomValidity('Все хэштеги должны быть уникальными');
-    }
   });
-
+  return errorMessages;
 };
 
 textHashtag.addEventListener('input', () =>{
   const textHashtagLowerCase = textHashtag.value.toLowerCase();
-  const hashtagsWithSpace = textHashtagLowerCase.textContent.split(' ');
-  const hashtags = hashtagsWithSpace.replace(/ +/g, ' ').trim();
+  const hashtagsWithSpace =  textHashtagLowerCase.replace(/ +/g, ' ').trim();
+  const hashtags = hashtagsWithSpace.split(' ');
   const errorMessages = validateHashtags(hashtags);
   if (errorMessages.length !== 0) {
     textHashtag.setCustomValidity(errorMessages.join(' \n'));
