@@ -13,9 +13,10 @@ const pictureCancelBtn = document.querySelector('#picture-cancel');
 const commentLoaderBtn = document.querySelector('.social__comments-loader');
 const sendCommentBtn = document.querySelector('.social__footer-btn');
 const commentTemplate = document.querySelector('#comment').content.querySelector('.social__comment');
+const commentsLoadedCount = document.querySelector('.comments-loaded');
 
 let comments = [];
-const commentsLoadedCount = document.querySelector('.comments-loaded');
+
 
 const showComments = (commentsSlice) => {
   const commentFragment = document.createDocumentFragment();

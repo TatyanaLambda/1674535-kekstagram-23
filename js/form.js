@@ -16,12 +16,14 @@ const onPopupEscKeydown = (evt) => {
   }
 };
 
+function hiddenModalElement(){
+  userModalElement.classList.add('hidden');
+}
+
 function openUserModal (){
   body.classList.add('modal-open');
   userModalElement.classList.remove('hidden');
-  uploadCancelBtn.addEventListener('click', () => {
-    userModalElement.classList.add('hidden');
-  });
+  uploadCancelBtn.addEventListener('click', hiddenModalElement);
 
   document.addEventListener('keydown', onPopupEscKeydown);
 }
@@ -30,9 +32,7 @@ function closeUserModal (){
   if (textHashtag !== document.activeElement && textDescription !== document.activeElement){
     body.classList.remove('modal-open');
     userModalElement.classList.add('hidden');
-    uploadCancelBtn.removeEventListener('click', () => {
-      userModalElement.classList.add('hidden');
-    });
+    uploadCancelBtn.removeEventListener('click', hiddenModalElement);
     document.removeEventListener('keydown', onPopupEscKeydown);
     uploadForm.reset();
   }

@@ -4,28 +4,16 @@ const MAX_HASHTAG_LENGTH = 20;
 const textHashtag = document.querySelector('.text__hashtags');
 const textDescription = document.querySelector('.text__description');
 
-
-textDescription.addEventListener('input', () => {
-  const valueLength = textDescription.value.length;
-  if (valueLength > MAX_DESCRIPTION_LENGTH) {
-    textDescription.setCustomValidity(`Удалите лишние ${valueLength - MAX_DESCRIPTION_LENGTH} симв.`);
-  } else {
-    textDescription.setCustomValidity('');
-  }
-  textDescription.reportValidity();
-});
-
-
 const checkUnicalElements = function(arr) {
-  const tempArr = [];
-  for (let i=0, l=arr.length; i<l; i++){
-    if (tempArr.indexOf(arr[i]) === -1 && arr[i] !== ''){
-      tempArr.push(arr[i]);
+  const set = new Set();
+  for (const item of arr) {
+    if (set.has(item)) {
+      return false;
     }
+    set.add(item);
   }
-  return tempArr;
+  return true;
 };
-
 
 const pushErrorMessage = function (errorMessage, errorMessages) {
   if (errorMessages.indexOf(errorMessage) === -1) {
@@ -75,3 +63,12 @@ textHashtag.addEventListener('input', () =>{
   textHashtag.reportValidity();
 });
 
+textDescription.addEventListener('input', () => {
+  const valueLength = textDescription.value.length;
+  if (valueLength > MAX_DESCRIPTION_LENGTH) {
+    textDescription.setCustomValidity(`Удалите лишние ${valueLength - MAX_DESCRIPTION_LENGTH} симв.`);
+  } else {
+    textDescription.setCustomValidity('');
+  }
+  textDescription.reportValidity();
+});
